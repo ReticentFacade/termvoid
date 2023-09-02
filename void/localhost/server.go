@@ -1,23 +1,22 @@
-package main 
+package localhost 
 
 import (
+	"fmt"
 	"net/http"
 )
 
-func main() {
-	http.HandleFunc("/upload", func(w http.ResponseWriter, r *http.Request) {
-		// ====================
-		// uploading logic here
-		// ====================
-	})
-
-	// Start the server
-	port := 8080
-	fmt.Println("Server started at port: ", port)
-
-	err := http.ListenAndServe(fmt.Sprintf(":%d", port), nil)
-	if err != nil {
-		fmt.Println("Error while starting server: ", err)
-		return
-	}
+func UploadingFunc(w http.ResponseWriter, r *http.Request) {
+    if r.URL.Path != "/upload" {
+        http.Error(w, "404 not found.", http.StatusNotFound)
+        return
+    }
+    if r.Method != "POST" {
+        http.Error(w, "Method is not supported.", http.StatusNotFound)
+        return
+    }
+    fmt.Fprintf(w, "Hello World!")
+    fmt.Println("Uploading file...")
+    // ====================
+    // uploading logic here
+    // ====================
 }

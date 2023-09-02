@@ -1,13 +1,11 @@
-/*
-Copyright © 2023 NAME HERE <EMAIL ADDRESS>
-
-*/
 package cmd
+// package main
 
 import (
 	"os"
 	"fmt"
 	"void/utils"
+	"net/http"
 
 	"github.com/spf13/cobra"
 )
@@ -48,6 +46,23 @@ var uploadCmd = &cobra.Command{
 		req, err := http.NewRequest("POST", url, file)
 		if err != nil {
 			fmt.Println("Error while creating request: ", err)
+		}
+		fmt.Println("Request: ", req)
+		req.Header.Set("Content-Type", "multipart/form-data")
+
+		// Send the req: 
+		resp, err := client.Do(req)
+		if err != nil {
+			fmt.Println("Error while sending request: ", err)
+			return
+		}
+		defer resp.Body.Close()
+
+		// Check the resp: 
+		if resp.StatusCode == http.StatusOK {
+			fmt.Println("File uploaded successfully! 😁 \nStatus: ", resp.StatusCode)
+		} else {
+			fmt.Println("Error while uploading file! 😢 \nStatus: ", resp.StatusCode)
 		}
 		// ====================
 
