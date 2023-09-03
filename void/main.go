@@ -19,11 +19,11 @@ func main() {
 
 	// Start the server
 	port := 8080
-	fmt.Println("Server started at port: ", port)
+	fmt.Println("main.go: Server started at port:", port)
 
 	err := http.ListenAndServe(fmt.Sprintf(":%d", port), nil)
 	if err != nil {
-		fmt.Println("Error while starting server: ", err)
+		fmt.Println("Error while starting server:", err)
 		return
 	}
 }

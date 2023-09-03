@@ -1,5 +1,4 @@
 package cmd
-// package main
 
 import (
 	"os"
@@ -17,7 +16,6 @@ var uploadCmd = &cobra.Command{
 	Usage:
 	termvoid upload [FILE]`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("upload called...")
 		filePath := args[0]
 
 		// Check if file exists
