@@ -3,6 +3,9 @@ package localhost
 import (
 	"fmt"
 	"net/http"
+	"path/filepath"
+	"time"
+	"void/utils"
 )
 
 func UploadingFunc(w http.ResponseWriter, r *http.Request) {
@@ -17,6 +20,24 @@ func UploadingFunc(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("server.go: Uploading file...")
 	// ====================
 	// uploading logic here
+	// Extracting metadata
+
+	// Extracting name from the req header:
+	fileName := filepath.Base(r.Header.Get("Content-Disposition"))
+	fmt.Println("server.go: File name: ", fileName)
+
+	// Assign ID, Downloads, and Expiration Date to the file:
+	fileID, err := utils.GenerateID()
+	if err != nil {
+		fmt.Println("Error while generating ID: ", err)
+		return
+	}
+	fmt.Println("server.go: File ID: ", fileID)
+	downloadsAllowed := 10
+	fmt.Println("server.go: Downloads allowed: ", downloadsAllowed)
+	// expirationDate := utils.SetExpirationDate()
+	expirationDate := time.Now().Add(24 * time.Hour)
+	fmt.Println("server.go: Expiration date: ", expirationDate)
 	// ====================
 }
 

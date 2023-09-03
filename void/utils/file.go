@@ -1,8 +1,22 @@
 package utils
 
 import (
+	"fmt"
 	"os"
+	"time"
+
+	"github.com/google/uuid"
 )
+
+// Struct to store FileInfo:
+type FileInfo struct {
+	ID             string
+	Name           string
+	Size           int64
+	MIME           string
+	Downloads      int
+	ExpirationDate time.Time
+}
 
 // IfFileExists checks if a file exists in the current directory or not
 func IfFileExistsInCurrDir(fileName string) (bool, error) {
@@ -12,7 +26,7 @@ func IfFileExistsInCurrDir(fileName string) (bool, error) {
 		return false, err
 	}
 
-	// Full path to the file in the currDir: 
+	// Full path to the file in the currDir:
 	fullPath := currDir + string(os.PathSeparator) + fileName
 
 	// Check if file exists:
@@ -38,4 +52,17 @@ func IfFileExists(path string) (bool, error) {
 	}
 
 	return false, err // Error while checking
+}
+
+func GenerateID() (string, error) {
+	return uuid.New().String(), nil
+}
+
+func ExtractFileID(FileURL string) (string, error) {
+	return "fileID", nil
+}
+
+func GetFileInfo(fileID string) (*FileInfo, error) {
+	fmt.Println("utils/file.go: GetFileInfo running: fileID: ", fileID)
+	return nil, nil
 }

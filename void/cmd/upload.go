@@ -1,10 +1,11 @@
 package cmd
 
 import (
-	"os"
 	"fmt"
-	"void/utils"
 	"net/http"
+	"os"
+	"time"
+	"void/utils"
 
 	"github.com/spf13/cobra"
 )
@@ -30,7 +31,7 @@ var uploadCmd = &cobra.Command{
 		}
 
 		// ====================
-		// uploading logic here
+		// Assigning metadata and uploading logic here
 		url := "http://localhost:8080/upload"
 		file, err := os.Open(filePath)
 		if err != nil {
@@ -38,6 +39,22 @@ var uploadCmd = &cobra.Command{
 			return
 		}
 		defer file.Close()
+
+		// --------------------
+		// Assigning metadata:
+		fileID, err := utils.GenerateID()
+		if err != nil {
+			fmt.Println("Error while generating ID: ", err)
+			return
+		}
+		fmt.Println("upload.go: File ID: ", fileID)
+
+		downloadsAllowed := 10
+		fmt.Println("upload.go: Downloads allowed: ", downloadsAllowed)
+
+		expirationDate := time.Now().Add(24 * time.Hour)
+		fmt.Println("upload.go: Expiration date: ", expirationDate)
+		// --------------------
 
 		// Create a multipart/form-data req:
 		client := &http.Client{}
@@ -48,7 +65,7 @@ var uploadCmd = &cobra.Command{
 		fmt.Println("Request: ", req)
 		req.Header.Set("Content-Type", "multipart/form-data")
 
-		// Send the req: 
+		// Send the req:
 		resp, err := client.Do(req)
 		if err != nil {
 			fmt.Println("Error while sending request: ", err)
@@ -56,7 +73,7 @@ var uploadCmd = &cobra.Command{
 		}
 		defer resp.Body.Close()
 
-		// Check the resp: 
+		// Check the resp:
 		if resp.StatusCode == http.StatusOK {
 			fmt.Println("File uploaded successfully! 😁 \nStatus: ", resp.StatusCode)
 		} else {
