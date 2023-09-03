@@ -13,7 +13,7 @@ import (
 func TestDownload(t *testing.T) {
 	fmt.Println("downloadTest.go: Downloading file...")
 
-	// Start a test HTTP server
+	// Test HTTP server
 	go func() {
 		http.Handle("/testfiles/", http.StripPrefix("/testfiles/", http.FileServer(http.Dir("tests"))))
 		port := 8080
@@ -25,21 +25,20 @@ func TestDownload(t *testing.T) {
 		}
 	}()
 
-	// This sleep allows the test server to start before running the test
+	// Allow the test server to start before running the test
 	time.Sleep(1 * time.Second)
 }
 
 func TestDownloadingHandler(t *testing.T) {
 	// Create a test HTTP server
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		// Implement the behavior you expect from your download handler
-		// For example, you can write a sample response here.
+
 		w.WriteHeader(http.StatusOK)
 		w.Write([]byte("This is a test file content."))
 	}))
 	defer server.Close()
 
-	// Use the test server's URL as the file URL in your download command
+	// Using test-server's URL as the file URL for `download` cmd
 	// fileURL := "http://localhost:8080/testfiles/testFile.txt"
 	fileURL := "https://gist.github.com/ReticentFacade/504a8c38d43efcc8333a9b84c4d5cd7b"
 	fmt.Println("File URL: ", fileURL)
