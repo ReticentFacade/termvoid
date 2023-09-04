@@ -87,5 +87,6 @@ var uploadCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(uploadCmd)
+	uploadCmd.Flags().BoolP("copy", "c", false, "Upload a copy of the file (& not the original)")
 	// uploadCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }

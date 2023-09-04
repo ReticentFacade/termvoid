@@ -1,0 +1,21 @@
+1. CLI: 
+    ☐ Commands: 
+        ☐ For now: 
+            ☐ upload [FILE]
+                ☐ upload [FILE] -c (upload [FILE] --copy)
+            ✔ download [FILE-URL] @done (04/09/2023, 11:22:15)
+            ☐ info [FILE-URL]
+            ☐ history [FILE-URL]
+        ☐ Later: 
+            ☐ delete [FILE-URL]
+            ☐ rename [FILE-URL]
+
+2. R_lib: 
+    ☐ File-management: 
+        ☐ upload_file()
+
+4. Cgo: 
+    ☐ Link R_lib with Go_CLI
+        
+3. Web Server: 
+    ☐ 
