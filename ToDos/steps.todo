@@ -11,8 +11,7 @@
             ☐ rename [FILE-URL]
 
 2. R_lib: 
-    ☐ File-management: 
-        ☐ upload_file()
+    ☐ File-management (refer to ./void_lib.todo)
 
 4. Cgo: 
     ☐ Link R_lib with Go_CLI

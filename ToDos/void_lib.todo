@@ -1,54 +1,9 @@
-ToDo:
+ToDo: 
+    ☐ 1. File Existence Check (for both files and directories)
+    ☐ 2. File and Directory Location Retrieval
 
-1. File Operations using `std::fs`: 
-    ☐ Read Files
-        ☐ a. As a string
-        ☐ b. Line by line
+    ☐ 3. Fast File Search (System-Wide)
+    ☐ 4. Efficient File Download and Save
 
-    ☐ Write Files
-    ☐ Create Files
-    ☐ Checking if a path exists
-    ☐ Checking if a path is a file or a directory
-    
-    ☐ Delete Files [Might need when uploading original files?]
-
-
-2. Directory Operations: 
-    ☐ Create directory
-    ☐ List directory contents
-    ☐ Delete directory [Might need when uploading original but archived-directory?]
-    ☐ Moving directory? 
-
-
-3. Path Manipulation:
-    ☐ Joining
-    ☐ Splitting
-    ☐ Normalizing
-    ☐ Getting the absolute path
-    ☐ Getting the relative path
-
-
-4. Metadata Handling: 
-    ☐ Getting the file metadata
-    ☐ Getting the file name
-    ☐ Getting the file extension
-    ☐ Getting the file size
-    ☐ Getting permissions
-
-    ☐ Getting the directory name
-
-
-5. Compression & Decompression:
-    - Common compression algorithms = `zstd`, `flate2`
-    ☐ Zip
-    ☐ Unzip
-
-
-6. Unit and Integration Testing:
-    - Use Rust's built-in testing framework `(#[cfg(test)])` and consider using testing libraries like `assert_eq!` and `quickcheck`
-
-    ☐ Write comprehensive unit tests and integration tests to ensure the correctness and reliability
-
-
-7. Documentation: 
-    - Using `rustdoc`? 
+    ☐ 5. Directory Archiving for Upload
+    ☐ 6. Decompressing Downloaded Files (if they're in archived forms)
