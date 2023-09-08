@@ -1,2 +1,2 @@
 pub mod exists;
-pub mod directory;
+pub mod location;

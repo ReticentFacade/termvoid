@@ -1,8 +1,8 @@
 ToDo: 
-    ☐ 1. File Existence Check (for both files and directories)
-    ☐ 2. File and Directory Location Retrieval
+    ✔ 1. File Existence Check (for both files and directories) @done (08/09/2023, 00:01:39)
+    ✔ 2. File and Directory Location Retrieval @done (08/09/2023, 11:43:14)
 
-    ☐ 3. Fast File Search (System-Wide)
+    ☐ 3. File Search (System-Wide)
     ☐ 4. Efficient File Download and Save
 
     ☐ 5. Directory Archiving for Upload
