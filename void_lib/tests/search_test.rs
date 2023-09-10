@@ -2,7 +2,7 @@ use void_lib::file_operations::search::file_search;
 use std::fs::File;
 use tempfile::tempdir;
 
-#[test] 
+#[test]
 pub fn test_file_search_existing_file() {
     let temp_dir = tempdir().expect("Failed to create temporary directory");
 
