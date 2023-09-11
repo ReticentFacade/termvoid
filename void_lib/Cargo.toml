@@ -11,6 +11,7 @@ path = "src/lib.rs"
 
 [dependencies]
 dotenv = "0.15"
+zip = "0.5"
 zip_archive = "1.2"
 
 [dev-dependencies]
