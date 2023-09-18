@@ -1,12 +1,35 @@
+use std::os::raw::c_char;
 #[allow(unused_imports)]
+use std::ffi::{CString, CStr};
+#[allow(unused_imports)]
+use std::ptr;
 use std::fs::File;
 #[allow(unused_imports)]
 use std::io::{self, Read, Write};
-#[allow(unused_imports)]
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 use zip::ZipArchive;
 
-pub fn decompress_file(archive_file: &str, destination_dir: &str) -> Result<(), String> {
+#[repr(C)]
+pub enum CResult {
+    Ok,
+    Err,
+}
+
+#[no_mangle]
+pub extern "C" fn decompress_file(archive_file: *const c_char, destination_dir: *const c_char) -> CResult {
+    let archive_file_cstr = unsafe { CStr::from_ptr(archive_file) };
+    let destination_dir_cstr = unsafe { CStr::from_ptr(destination_dir) };
+
+    let archive_file_str = archive_file_cstr.to_str().expect("Invalid UTF-8 in archive_file");
+    let destination_dir_str = destination_dir_cstr.to_str().expect("Invalid UTF-8 in destination_dir");
+
+    match decompress(archive_file_str, destination_dir_str) {
+        Ok(_) => CResult::Ok,
+        Err(_) => CResult::Err,
+    }
+}
+
+fn decompress(archive_file: &str, destination_dir: &str) -> Result<(), String> {
     // Open the archive file
     let archive_file = File::open(archive_file).map_err(|e| format!("Failed to open archive file: {}", e))?;
 
@@ -38,41 +61,3 @@ pub fn decompress_file(archive_file: &str, destination_dir: &str) -> Result<(), 
 
     Ok(())
 }
-
-// pub fn decompress_file(archive_file: &str, destination_dir: &str) -> Result<(), String> {
-//     // Open the archive file
-//     let archive_file = File::open(archive_file).map_err(|e| format!("Failed to open archive file: {}", e))?;
-
-//     // Create a mutable ZipArchive from the archive file
-//     let mut zip_archive = ZipArchive::new(archive_file).map_err(|e| format!("Failed to create ZipArchive: {}", e))?;
-
-//     // Extract the contents to the destination directory
-//     for i in 0..zip_archive.len() {
-//         let entry = match zip_archive.by_index(i) {
-//             Ok(e) => e,
-//             Err(e) => return Err(format!("Failed to get archive entry: {}", e)),
-//         };
-
-//         let mut file = match entry {
-//             Ok(f) => f,
-//             Err(e) => return Err(format!("Failed to get archive entry: {}", e)),
-//         };
-
-//         let mut buffer = Vec::new();
-//         file.read_to_end(&mut buffer).map_err(|e| format!("Failed to read file from archive: {}", e))?;
-
-//         // Determine the path for the extracted file
-//         let entry_path = PathBuf::from(destination_dir).join(entry.name());
-
-//         // Ensure the parent directories exist
-//         if let Some(parent) = entry_path.parent() {
-//             std::fs::create_dir_all(parent).map_err(|e| format!("Failed to create directory: {}", e))?;
-//         }
-
-//         // Write the file to the destination
-//         let mut output_file = File::create(&entry_path).map_err(|e| format!("Failed to create file: {}", e))?;
-//         output_file.write_all(&buffer).map_err(|e| format!("Failed to write file: {}", e))?;
-//     }
-
-//     Ok(())
-// }

@@ -1,26 +1,34 @@
 use std::path::Path;
 use zip_archive::{Archiver, Format};
+#[allow(unused_imports)]
+use std::os::raw::c_int;
 
-#[allow(dead_code)]
-pub fn archive_dir(source_dir: &str, destination_dir: &str) -> Result<(), String> {
-
-    // Archive the directory using the default settings for FORMAT & THREAD_COUNT:
-    archive_dir_without_defaults(source_dir, destination_dir, Format::Zip, 4)
+#[repr(C)]
+pub enum CResult {
+    Ok,
+    Err,
 }
 
-#[allow(dead_code)]
-fn archive_dir_without_defaults(source_dir: &str, destination_dir: &str, format: Format, thread_count: usize) -> Result<(), String> {
-    let source_dir = Path::new(source_dir);
-    let destination_dir = Path::new(destination_dir);
+#[no_mangle]
+pub extern "C" fn archive_dir(
+    source_dir: *const std::os::raw::c_char,
+    destination_dir: *const std::os::raw::c_char,
+) -> CResult {
+    // `unsafe` 'cause raw pointers obtained from C are considered unsafe in Rust
+    let source_dir_str = unsafe { std::ffi::CStr::from_ptr(source_dir).to_str().unwrap() };
+    let destination_dir_str = unsafe { std::ffi::CStr::from_ptr(destination_dir).to_str().unwrap() };
+
+    let source_dir = Path::new(source_dir_str);
+    let destination_dir = Path::new(destination_dir_str);
 
     let mut archiver = Archiver::new();
     archiver.push(source_dir);
     archiver.set_destination(destination_dir);
-    archiver.set_format(format);
-    archiver.set_thread_count(thread_count.try_into().unwrap());
+    archiver.set_format(Format::Zip);
+    archiver.set_thread_count(4);
 
     match archiver.archive() {
-        Ok(_) => Ok(()),
-        Err(e) => Err(format!("Failed to archive directory: {}", e)),
+        Ok(_) => CResult::Ok,
+        Err(_) => CResult::Err,
     }
 }
