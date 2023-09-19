@@ -1,29 +1,14 @@
 package main
 
-import (
-	"fmt"
-	"void/cmd"
-	"net/http"
-	"void/localhost"
-)
+/*
+#cgo CFLAGS: -I../lib/void_lib
+#cgo LDFLAGS: -L../lib/void_lib/target/release -lvoid_lib
+#include "../lib/void_lib.h"
+*/
+import "C"
 
 func main() {
-	// CLI
-	cmd.Execute()
+	C.archive_dir(C.CString("../test_data/archive_dir/source_dir"), C.CString("../test_data/archive_dir/destination_dir/"))
 
-	// ===============================
-	// Localhost server
-	fileServer := http.FileServer(http.Dir("./localhost"))
-	http.Handle("/", fileServer)
-	http.HandleFunc("/upload", localhost.UploadingFunc)
-
-	// Start the server
-	port := 8080
-	fmt.Println("main.go: Server started at port:", port)
-
-	err := http.ListenAndServe(fmt.Sprintf(":%d", port), nil)
-	if err != nil {
-		fmt.Println("Error while starting server:", err)
-		return
-	}
+	// C.decompress_file(C.CString("../test_data/archive_dir/destination_dir/source_dir.zip"), C.CString("../test_data/archive_dir/destination_dir/decompressed_file/"))
 }

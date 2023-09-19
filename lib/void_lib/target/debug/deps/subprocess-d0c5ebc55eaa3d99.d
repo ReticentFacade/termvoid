@@ -1,0 +1,10 @@
+/Users/Reticent/Desktop/Work/ProjectWorkspace/github/termvoid/void_lib/target/debug/deps/subprocess-d0c5ebc55eaa3d99.rmeta: /Users/Reticent/.cargo/registry/src/index.crates.io-6f17d22bba15001f/subprocess-0.2.9/src/lib.rs /Users/Reticent/.cargo/registry/src/index.crates.io-6f17d22bba15001f/subprocess-0.2.9/src/builder.rs /Users/Reticent/.cargo/registry/src/index.crates.io-6f17d22bba15001f/subprocess-0.2.9/src/communicate.rs /Users/Reticent/.cargo/registry/src/index.crates.io-6f17d22bba15001f/subprocess-0.2.9/src/popen.rs /Users/Reticent/.cargo/registry/src/index.crates.io-6f17d22bba15001f/subprocess-0.2.9/src/posix.rs /Users/Reticent/.cargo/registry/src/index.crates.io-6f17d22bba15001f/subprocess-0.2.9/src/os_common.rs
+
+/Users/Reticent/Desktop/Work/ProjectWorkspace/github/termvoid/void_lib/target/debug/deps/subprocess-d0c5ebc55eaa3d99.d: /Users/Reticent/.cargo/registry/src/index.crates.io-6f17d22bba15001f/subprocess-0.2.9/src/lib.rs /Users/Reticent/.cargo/registry/src/index.crates.io-6f17d22bba15001f/subprocess-0.2.9/src/builder.rs /Users/Reticent/.cargo/registry/src/index.crates.io-6f17d22bba15001f/subprocess-0.2.9/src/communicate.rs /Users/Reticent/.cargo/registry/src/index.crates.io-6f17d22bba15001f/subprocess-0.2.9/src/popen.rs /Users/Reticent/.cargo/registry/src/index.crates.io-6f17d22bba15001f/subprocess-0.2.9/src/posix.rs /Users/Reticent/.cargo/registry/src/index.crates.io-6f17d22bba15001f/subprocess-0.2.9/src/os_common.rs
+
+/Users/Reticent/.cargo/registry/src/index.crates.io-6f17d22bba15001f/subprocess-0.2.9/src/lib.rs:
+/Users/Reticent/.cargo/registry/src/index.crates.io-6f17d22bba15001f/subprocess-0.2.9/src/builder.rs:
+/Users/Reticent/.cargo/registry/src/index.crates.io-6f17d22bba15001f/subprocess-0.2.9/src/communicate.rs:
+/Users/Reticent/.cargo/registry/src/index.crates.io-6f17d22bba15001f/subprocess-0.2.9/src/popen.rs:
+/Users/Reticent/.cargo/registry/src/index.crates.io-6f17d22bba15001f/subprocess-0.2.9/src/posix.rs:
+/Users/Reticent/.cargo/registry/src/index.crates.io-6f17d22bba15001f/subprocess-0.2.9/src/os_common.rs:

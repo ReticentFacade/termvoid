@@ -1,0 +1,10 @@
+/Users/Reticent/Desktop/Work/ProjectWorkspace/github/termvoid/void_lib/target/debug/deps/xattr-72a7663ceed5fd12.rmeta: /Users/Reticent/.cargo/registry/src/index.crates.io-6f17d22bba15001f/xattr-1.0.1/src/lib.rs /Users/Reticent/.cargo/registry/src/index.crates.io-6f17d22bba15001f/xattr-1.0.1/src/error.rs /Users/Reticent/.cargo/registry/src/index.crates.io-6f17d22bba15001f/xattr-1.0.1/src/sys/mod.rs /Users/Reticent/.cargo/registry/src/index.crates.io-6f17d22bba15001f/xattr-1.0.1/src/util.rs /Users/Reticent/.cargo/registry/src/index.crates.io-6f17d22bba15001f/xattr-1.0.1/src/sys/linux_macos/mod.rs /Users/Reticent/.cargo/registry/src/index.crates.io-6f17d22bba15001f/xattr-1.0.1/src/sys/linux_macos/macos.rs
+
+/Users/Reticent/Desktop/Work/ProjectWorkspace/github/termvoid/void_lib/target/debug/deps/xattr-72a7663ceed5fd12.d: /Users/Reticent/.cargo/registry/src/index.crates.io-6f17d22bba15001f/xattr-1.0.1/src/lib.rs /Users/Reticent/.cargo/registry/src/index.crates.io-6f17d22bba15001f/xattr-1.0.1/src/error.rs /Users/Reticent/.cargo/registry/src/index.crates.io-6f17d22bba15001f/xattr-1.0.1/src/sys/mod.rs /Users/Reticent/.cargo/registry/src/index.crates.io-6f17d22bba15001f/xattr-1.0.1/src/util.rs /Users/Reticent/.cargo/registry/src/index.crates.io-6f17d22bba15001f/xattr-1.0.1/src/sys/linux_macos/mod.rs /Users/Reticent/.cargo/registry/src/index.crates.io-6f17d22bba15001f/xattr-1.0.1/src/sys/linux_macos/macos.rs
+
+/Users/Reticent/.cargo/registry/src/index.crates.io-6f17d22bba15001f/xattr-1.0.1/src/lib.rs:
+/Users/Reticent/.cargo/registry/src/index.crates.io-6f17d22bba15001f/xattr-1.0.1/src/error.rs:
+/Users/Reticent/.cargo/registry/src/index.crates.io-6f17d22bba15001f/xattr-1.0.1/src/sys/mod.rs:
+/Users/Reticent/.cargo/registry/src/index.crates.io-6f17d22bba15001f/xattr-1.0.1/src/util.rs:
+/Users/Reticent/.cargo/registry/src/index.crates.io-6f17d22bba15001f/xattr-1.0.1/src/sys/linux_macos/mod.rs:
+/Users/Reticent/.cargo/registry/src/index.crates.io-6f17d22bba15001f/xattr-1.0.1/src/sys/linux_macos/macos.rs:

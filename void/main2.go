@@ -1,0 +1,32 @@
+package main
+
+import (
+	"fmt"
+	"net/http"
+	"void/cmd"
+	"void/localhost"
+)
+
+func main2() {
+	// CLI
+	cmd.Execute()
+
+	fmt.Println("main.go: Starting deleteit...")
+	deleteit()
+
+	// ===============================
+	// Localhost server
+	fileServer := http.FileServer(http.Dir("./localhost"))
+	http.Handle("/", fileServer)
+	http.HandleFunc("/upload", localhost.UploadingFunc)
+
+	// Start the server
+	port := 8080
+	fmt.Println("main.go: Server started at port:", port)
+
+	err := http.ListenAndServe(fmt.Sprintf(":%d", port), nil)
+	if err != nil {
+		fmt.Println("Error while starting server:", err)
+		return
+	}
+}
