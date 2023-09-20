@@ -45,14 +45,14 @@ ToDo:
 
 5. Compression & Decompression:
     - Common compression algorithms = `zstd`, `flate2`
-    ☐ Zip
-    ☐ Unzip
+    ✔ Zip @done (20/09/2023, 12:16:38)
+    ✔ Unzip @done (20/09/2023, 12:16:39)
 
 
 6. Unit and Integration Testing:
     - Use Rust's built-in testing framework `(#[cfg(test)])` and consider using testing libraries like `assert_eq!` and `quickcheck`
 
-    ☐ Write comprehensive unit tests and integration tests to ensure the correctness and reliability
+    ✔ Write comprehensive unit tests and integration tests to ensure the correctness and reliability @done (20/09/2023, 12:16:51)
 
 
 7. Documentation: 

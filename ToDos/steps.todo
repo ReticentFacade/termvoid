@@ -11,10 +11,23 @@
             ☐ rename [FILE-URL]
 
 2. R_lib: 
-    ☐ File-management (refer to ./void_lib.todo)
+    ✔ File-management (refer to ./void_lib.todo) @done (20/09/2023, 12:17:38)
 
 4. Cgo: 
-    ☐ Link R_lib with Go_CLI
+    ✔ Link R_lib with Go_CLI @done (20/09/2023, 12:17:42)
         
-3. Web Server: 
+3. gRPC: 
+    ☐ First: Define service
+        ☐ Create a service definition file
+        ☐ Define method request and response types
+    ☐ Second: Create Server
+    ☐ Third: Create Client
+        ☐ Create a stub
+    
+    Methods like: 
+        ☐ UploadFile - accepts a FileUpload message; returns a FileMetadata message
+        ☐ GetFileMetadata - accepts a file ID; returns FileMetadata for that file
+        ☐ DownloadFile - downloads file based on file name or id - accepts a link?; returns a FileDownload message
+    
+4. Web Server: 
     ☐ 
