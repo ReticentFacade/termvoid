@@ -10,7 +10,7 @@ require (
 require module/path v1.2.3
 
 require (
-	github.com/ReticentFacade/termvoid/pkg/proto v0.0.1
+	github.com/ReticentFacade/termvoid/pkg/proto v1.0.0
 )
 
 require (
