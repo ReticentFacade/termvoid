@@ -7,7 +7,7 @@ package main
 */
 import "C"
 
-func main() {
+func main3() {
 	C.archive_dir(C.CString("../test_data/archive_dir/source_dir"), C.CString("../test_data/archive_dir/destination_dir/"))
 
 	// C.decompress_file(C.CString("../test_data/archive_dir/destination_dir/source_dir.zip"), C.CString("../test_data/archive_dir/destination_dir/decompressed_file/"))
