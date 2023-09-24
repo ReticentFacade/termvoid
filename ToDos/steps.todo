@@ -17,9 +17,9 @@
     ✔ Link R_lib with Go_CLI @done (20/09/2023, 12:17:42)
         
 3. gRPC: 
-    ☐ First: Define service
-        ☐ Create a service definition file
-        ☐ Define method request and response types
+    ✔ First: Define service @done (21/09/2023, 20:44:12)
+        ✔ Create a service definition file @done (20/09/2023, 13:04:56)
+        ✔ Define method request and response types @done (20/09/2023, 13:04:58)
     ☐ Second: Create Server
     ☐ Third: Create Client
         ☐ Create a stub

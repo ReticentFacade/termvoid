@@ -3,6 +3,73 @@ package termvoid;
 
 option go_package = "./gRPC/proto";
 
+// ========================== SERVICES ==============================
+
+service FileService {
+    rpc UploadFile(stream FileContent) returns(FileResponse);
+
+    // If the files to be downloaded have (fileSize > 10MB), change the response type to `stream FileContent`
+    rpc DownloadFile(FileRequest) returns(FileContent);
+    rpc GetFileInfo(FileRequest) returns(FileMetadata);
+    rpc GetFileHistory(FileRequest) returns(FileHistory);
+}
+
+// ========================== MESSAGES ==============================
+
+message FileContent {
+    bytes data = 1;
+}
+
+message FileRequest {
+    // Fetch list of files from the server/database and list them
+    FileRequestType request_type = 1; 
+    FileRequestType file_identifier = 2; // file_identifier => EITHER of `fileName`, `fileID`, or `URL`
+}
+
+message FileResponse {
+    repeated FileMetadata files = 1;
+}
+
+message FileHistory {
+    // Fetches history of that file - how many uploads, downloads, expiration_date etc.
+}
+
+message FileMetadata {
+    string ID = 1;
+    string name = 2;
+    int32 size = 3;
+    MIME mime = 4;
+    string downloads = 5;
+    ExpirationDate expiration_date = 6;
+    Url share_link = 7;
+}
+
+message ExpirationDate {
+    int32 day = 1;
+    int32 month = 2;
+    int32 year = 3;
+}
+
+message Url {
+    enum UrlHeader {
+        URL_UNSPECIFIED = 0;
+        HTTP = 1;
+        HTTPS = 2;
+    }
+
+    UrlHeader url_header = 1;
+    string url = 2;
+}
+
+// ========================== ENUMS ==============================
+
+// Gives an option to use either `fileName` or `fileID` or `fileURL`
+enum FileRequestType {
+    FILE_NAME = 0;
+    FILE_ID = 1;
+    FILE_URL = 2; 
+}
+
 enum MIME {
     MIME_UNSPECIFIED = 0;
     MIME_TXT = 1;
@@ -13,57 +80,5 @@ enum MIME {
     MIME_PDF = 6;
     MIME_DOC = 7;
     MIME_CSV = 8;
-    MIME_MD = 9;
-}
-
-enum UrlSchema {
-    SCHEMA_UNSPECIFIED = 0;
-    HTTP = 1;
-    HTTPS = 2;
-}
-
-message Url {
-    UrlSchema schema = 1;
-    string rest = 2;
-}
-
-message ExpirationDate {
-    int32 year = 1;
-    int32 month = 2;
-    int32 day = 3;
-}
-
-message FileMetadata {
-    string ID = 1; 
-    string name = 2;
-    int32 size = 3;
-    MIME mime = 4;
-    string downloads = 5;
-    ExpirationDate expiration_date = 6;
-    Url share_link = 7;
-}
-
-message FileUpload {
-    string name = 1;
-    MIME mime = 2;
-    Url share_link = 3;
-    ExpirationDate expiration_date = 4;
-}
-
-message FileDownload {
-    string ID = 1;
-    string name = 2;
-    MIME mime = 3;
-    string downloads = 4;
-    ExpirationDate expiration_date = 5;
-    Url share_link = 6;
-}
-
-// ===================================================================
-
-service FileService {
-    rpc UploadFile(FileUpload) returns (FileMetadata) {}
-    rpc DownloadFile(FileDownload) returns (FileMetadata) {}
-    rpc DeleteFile(FileDownload) returns (FileMetadata) {}
-    rpc ListFiles(Url) returns (stream FileMetadata) {}
+    MIME_MD = 9;  
 }
