@@ -7,7 +7,7 @@ import (
 	"void/localhost"
 )
 
-func main2() {
+func cgo_integration_test1() {
 	// CLI
 	cmd.Execute()
 

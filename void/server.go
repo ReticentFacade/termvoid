@@ -6,7 +6,8 @@ import (
 	"log"
 	"net"
 
-	pb "github.com/ReticentFacade/termvoid/pkg/proto"
+	pb "termvoid/pkg/proto"
+
 	"google.golang.org/grpc"
 )
 
