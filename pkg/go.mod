@@ -1,4 +1,4 @@
-module github.com/ReticentFacade/termvoid/pkg/proto
+module github.com/ReticentFacade/termvoid/pkg
 
 go 1.21.1
 
