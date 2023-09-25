@@ -1,11 +1,13 @@
 package cmd
 
 import (
+	"context"
 	"fmt"
 	"io"
 	"net/http"
 	"os"
 
+	pb "github.com/ReticentFacade/termvoid/pkg/proto"
 	"github.com/spf13/cobra"
 )
 
@@ -43,7 +45,7 @@ func downloadFile(url string) error {
 	}
 
 	// Extract the file name from the URL or provide a custom name
-	// For example, you can use path.Base(url) to get the filename from the URL.
+	// For example, use path.Base(url) to get the filename from the URL.
 
 	fileName := "./tests/DownloadedFiles/downloaded_file"
 
@@ -61,6 +63,11 @@ func downloadFile(url string) error {
 	}
 
 	return nil
+}
+
+func DownloadFile(ctx context.Context, request *pb.FileRequest) (*pb.FileContent, error) {
+	// Implement download logic
+	return nil, nil
 }
 
 func init() {
