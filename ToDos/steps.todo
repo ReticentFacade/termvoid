@@ -20,14 +20,14 @@
     ✔ First: Define service @done (21/09/2023, 20:44:12)
         ✔ Create a service definition file @done (20/09/2023, 13:04:56)
         ✔ Define method request and response types @done (20/09/2023, 13:04:58)
-    ☐ Second: Create Server
-    ☐ Third: Create Client
-        ☐ Create a stub
+    ✔ Second: Create Server @done (26/09/2023, 20:23:19)
+    ✔ Third: Create Client @done (26/09/2023, 20:23:18)
+        ✔ Create a stub @done (26/09/2023, 20:23:18)
     
     Methods like: 
-        ☐ UploadFile - accepts a FileUpload message; returns a FileMetadata message
-        ☐ GetFileMetadata - accepts a file ID; returns FileMetadata for that file
-        ☐ DownloadFile - downloads file based on file name or id - accepts a link?; returns a FileDownload message
+        ✔ UploadFile - accepts a FileUpload message; returns a FileMetadata message @done (26/09/2023, 20:23:56)
+        ✔ GetFileMetadata - accepts a file ID; returns FileMetadata for that file @done (26/09/2023, 20:23:55)
+        ✔ DownloadFile - downloads file based on file name or id - accepts a link?; returns a FileDownload message @done (26/09/2023, 20:23:54)
     
 4. Web Server: 
     ☐ 
