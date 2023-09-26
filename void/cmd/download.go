@@ -17,7 +17,7 @@ var downloadCmd = &cobra.Command{
 	Short: "Download a file from the server",
 	Long: `Download a file from the server.
 	Usage:
-	termvoid download [FILE-URL]`,
+	void download [FILE-URL]`,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("download called...")
 		fileURL := args[0]

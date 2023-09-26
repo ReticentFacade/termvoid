@@ -2,11 +2,13 @@ package cmd
 
 import (
 	"fmt"
+	"io"
 	"net/http"
 	"os"
 	"time"
 	"void/utils"
 
+	pb "github.com/ReticentFacade/termvoid/pkg/proto"
 	"github.com/spf13/cobra"
 )
 
@@ -15,7 +17,7 @@ var uploadCmd = &cobra.Command{
 	Short: "upload [FILE]",
 	Long: `Upload a file to the server.
 	Usage:
-	termvoid upload [FILE]`,
+	void upload [FILE]`,
 	Run: func(cmd *cobra.Command, args []string) {
 		filePath := args[0]
 
@@ -83,6 +85,23 @@ var uploadCmd = &cobra.Command{
 
 		fmt.Println("File uploaded successfully!")
 	},
+}
+
+// FOR PROVIDING FILE_URLS, REFER TO: https://firebase.google.com/docs/storage/admin/start#shareable_urls
+
+func UploadFile(stream pb.FileService_UploadFileServer) error {
+	for {
+		fileChunk, err := stream.Recv()
+		if err != nil {
+			if err == io.EOF {
+				return stream.SendAndClose(&pb.FileResponse{})
+			}
+			return err
+		}
+
+		// Implement upload logic
+		fmt.Printf("Received %d bytes of data\n", len(fileChunk.Data))
+	}
 }
 
 func init() {

@@ -1,9 +1,6 @@
 package main
 
 import (
-	"context"
-	"fmt"
-	"io"
 	"log"
 	"net"
 
@@ -17,49 +14,8 @@ const (
 )
 
 type server struct {
-	pb.UnimplementedFileServiceServer // Embed the UnimplementedFileServiceServer type
-}
-
-func (s *server) UploadFile(stream pb.FileService_UploadFileServer) error {
-	for {
-		// Receive chunks of file data from the client
-		fileChunk, err := stream.Recv()
-		if err != nil {
-			if err == io.EOF {
-				// Client has finished sending data
-				return stream.SendAndClose(&pb.FileResponse{
-					// Provide a response indicating the upload was successful
-				})
-			}
-			// Handle other errors
-			return err
-		}
-
-		// Process the received file chunk (fileChunk.Data)
-		// Implement your upload logic here
-		fmt.Printf("Received %d bytes of data\n", len(fileChunk.Data))
-	}
-}
-
-func (s *server) DownloadFile(ctx context.Context, request *pb.FileRequest) (*pb.FileContent, error) {
-	// Implement your download logic here based on the request
-	// You can return a FileContent message with the file data
-	// or handle it as needed
-	return nil, nil
-}
-
-func (s *server) GetFileInfo(ctx context.Context, request *pb.FileRequest) (*pb.FileMetadata, error) {
-	// Implement logic to fetch file information based on the request
-	// You can return a FileMetadata message with the file details
-	// or handle it as needed
-	return nil, nil
-}
-
-func (s *server) GetFileHistory(ctx context.Context, request *pb.FileRequest) (*pb.FileHistory, error) {
-	// Implement logic to fetch file history based on the request
-	// You can return a FileHistory message with the history details
-	// or handle it as needed
-	return nil, nil
+	// UnimplementedFileServiceServer type needs to be embedded
+	pb.UnimplementedFileServiceServer
 }
 
 func main() {
@@ -68,8 +24,16 @@ func main() {
 		log.Fatalf("Failed to listen: %v", err)
 	}
 
+	// app, err := firebase.NewApp(context.Background(), nil)
+	// if err != nil {
+	// 	log.Fatal("Error initializing firebase app: ", err)
+	// }
+	// fmt.Println("Firebase app initialized: ", app)
+
 	grpcServer := grpc.NewServer()
-	pb.RegisterFileServiceServer(grpcServer, &server{}) // Register the service implementation
+	// Registering service methods from upload.go & download.go
+	pb.RegisterFileServiceServer(grpcServer, &server{})
+	// TODO: Add more from info.go and history.go later
 
 	log.Printf("Server listening on port %s...\n", port)
 	if err := grpcServer.Serve(lis); err != nil {

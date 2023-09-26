@@ -1,0 +1,40 @@
+termvoid/
+|
+|- firebase/
+|        |
+|        |
+|        ☐ - - firebase.go: Handles `InitializeFirebase` function
+|        |
+|        |
+|        ☐ - - upload.go: Handles `UploadFileToFirebase` function
+|
+|
+|- void/
+    |
+    |
+    ☐ - - server.go: Calls `InitializeFirebase` function from firebase/firebase.go
+    |
+    |
+    ☐ - - cmd/
+            |
+            |
+            ☐ - - upload.go: Calls `UploadFileToFirebase` function from firebase/upload.go
+
+FLOW:
+    ☐ firebase/firebase.go: FIREBASE INITIALIZATION
+        - Create `InitializeFirebase` function in firebase/firebase.go
+
+    ☐ firebase/upload.go: STORAGE LOGIC
+        - Create `UploadFileToFirebase` function in firebase/upload.go: Handles the specific logic for uploading files to Firebase Storage & uses `InitializeFirebase` function 
+
+    ☐ void/server.go: SERVER INITIALIZATION
+        - It calls `InitializeFirebase` function from firebase/firebase.go because this makes sure that the Firebase app is initialized before we try to upload a file to Firebase Storage & it ensures that your server is ready to interact with Firebase.
+
+    ☐ void/server.go: GRPC SERVICE IMPLEMENTATION
+        - Implement gRPC's `UploadFile` method here. 
+        - `UploadFile` will call `UploadFileToFirebase` to handle the actual file upload to Firebase Storage.
+    
+    ☐ void/cmd/upload.go: COMMAND EXECUTION
+        - It calls `UploadFile` method to initiate the upload process
+        
+        - cmd invoked by user --> sends a req to gRPC server [void/server.go] --> gRPC server calls `UploadFile` method --> `UploadFile` calls `UploadFileToFirebase` to handle the actual file upload to Firebase Storage.
