@@ -186,55 +186,7 @@ func (x Url_UrlHeader) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use Url_UrlHeader.Descriptor instead.
 func (Url_UrlHeader) EnumDescriptor() ([]byte, []int) {
-	return file_proto_service_proto_rawDescGZIP(), []int{7, 0}
-}
-
-// --------------
-type UploadStatus struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Status string `protobuf:"bytes,1,opt,name=status,proto3" json:"status,omitempty"`
-}
-
-func (x *UploadStatus) Reset() {
-	*x = UploadStatus{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_proto_service_proto_msgTypes[0]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *UploadStatus) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UploadStatus) ProtoMessage() {}
-
-func (x *UploadStatus) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_service_proto_msgTypes[0]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UploadStatus.ProtoReflect.Descriptor instead.
-func (*UploadStatus) Descriptor() ([]byte, []int) {
-	return file_proto_service_proto_rawDescGZIP(), []int{0}
-}
-
-func (x *UploadStatus) GetStatus() string {
-	if x != nil {
-		return x.Status
-	}
-	return ""
+	return file_proto_service_proto_rawDescGZIP(), []int{6, 0}
 }
 
 type FileContent struct {
@@ -248,7 +200,7 @@ type FileContent struct {
 func (x *FileContent) Reset() {
 	*x = FileContent{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_proto_service_proto_msgTypes[1]
+		mi := &file_proto_service_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -261,7 +213,7 @@ func (x *FileContent) String() string {
 func (*FileContent) ProtoMessage() {}
 
 func (x *FileContent) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_service_proto_msgTypes[1]
+	mi := &file_proto_service_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -274,7 +226,7 @@ func (x *FileContent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FileContent.ProtoReflect.Descriptor instead.
 func (*FileContent) Descriptor() ([]byte, []int) {
-	return file_proto_service_proto_rawDescGZIP(), []int{1}
+	return file_proto_service_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *FileContent) GetData() []byte {
@@ -297,7 +249,7 @@ type FileRequest struct {
 func (x *FileRequest) Reset() {
 	*x = FileRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_proto_service_proto_msgTypes[2]
+		mi := &file_proto_service_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -310,7 +262,7 @@ func (x *FileRequest) String() string {
 func (*FileRequest) ProtoMessage() {}
 
 func (x *FileRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_service_proto_msgTypes[2]
+	mi := &file_proto_service_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -323,7 +275,7 @@ func (x *FileRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FileRequest.ProtoReflect.Descriptor instead.
 func (*FileRequest) Descriptor() ([]byte, []int) {
-	return file_proto_service_proto_rawDescGZIP(), []int{2}
+	return file_proto_service_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *FileRequest) GetRequestType() FileRequestType {
@@ -345,13 +297,14 @@ type FileResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Files []*FileMetadata `protobuf:"bytes,1,rep,name=files,proto3" json:"files,omitempty"`
+	Files  []*FileMetadata `protobuf:"bytes,1,rep,name=files,proto3" json:"files,omitempty"`
+	Status string          `protobuf:"bytes,2,opt,name=status,proto3" json:"status,omitempty"` // Status field for indicating upload status
 }
 
 func (x *FileResponse) Reset() {
 	*x = FileResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_proto_service_proto_msgTypes[3]
+		mi := &file_proto_service_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -364,7 +317,7 @@ func (x *FileResponse) String() string {
 func (*FileResponse) ProtoMessage() {}
 
 func (x *FileResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_service_proto_msgTypes[3]
+	mi := &file_proto_service_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -377,7 +330,7 @@ func (x *FileResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FileResponse.ProtoReflect.Descriptor instead.
 func (*FileResponse) Descriptor() ([]byte, []int) {
-	return file_proto_service_proto_rawDescGZIP(), []int{3}
+	return file_proto_service_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *FileResponse) GetFiles() []*FileMetadata {
@@ -385,6 +338,13 @@ func (x *FileResponse) GetFiles() []*FileMetadata {
 		return x.Files
 	}
 	return nil
+}
+
+func (x *FileResponse) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
 }
 
 type FileHistory struct {
@@ -396,7 +356,7 @@ type FileHistory struct {
 func (x *FileHistory) Reset() {
 	*x = FileHistory{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_proto_service_proto_msgTypes[4]
+		mi := &file_proto_service_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -409,7 +369,7 @@ func (x *FileHistory) String() string {
 func (*FileHistory) ProtoMessage() {}
 
 func (x *FileHistory) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_service_proto_msgTypes[4]
+	mi := &file_proto_service_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -422,7 +382,7 @@ func (x *FileHistory) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FileHistory.ProtoReflect.Descriptor instead.
 func (*FileHistory) Descriptor() ([]byte, []int) {
-	return file_proto_service_proto_rawDescGZIP(), []int{4}
+	return file_proto_service_proto_rawDescGZIP(), []int{3}
 }
 
 type FileMetadata struct {
@@ -442,7 +402,7 @@ type FileMetadata struct {
 func (x *FileMetadata) Reset() {
 	*x = FileMetadata{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_proto_service_proto_msgTypes[5]
+		mi := &file_proto_service_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -455,7 +415,7 @@ func (x *FileMetadata) String() string {
 func (*FileMetadata) ProtoMessage() {}
 
 func (x *FileMetadata) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_service_proto_msgTypes[5]
+	mi := &file_proto_service_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -468,7 +428,7 @@ func (x *FileMetadata) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FileMetadata.ProtoReflect.Descriptor instead.
 func (*FileMetadata) Descriptor() ([]byte, []int) {
-	return file_proto_service_proto_rawDescGZIP(), []int{5}
+	return file_proto_service_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *FileMetadata) GetID() string {
@@ -533,7 +493,7 @@ type ExpirationDate struct {
 func (x *ExpirationDate) Reset() {
 	*x = ExpirationDate{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_proto_service_proto_msgTypes[6]
+		mi := &file_proto_service_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -546,7 +506,7 @@ func (x *ExpirationDate) String() string {
 func (*ExpirationDate) ProtoMessage() {}
 
 func (x *ExpirationDate) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_service_proto_msgTypes[6]
+	mi := &file_proto_service_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -559,7 +519,7 @@ func (x *ExpirationDate) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ExpirationDate.ProtoReflect.Descriptor instead.
 func (*ExpirationDate) Descriptor() ([]byte, []int) {
-	return file_proto_service_proto_rawDescGZIP(), []int{6}
+	return file_proto_service_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *ExpirationDate) GetDay() int32 {
@@ -595,7 +555,7 @@ type Url struct {
 func (x *Url) Reset() {
 	*x = Url{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_proto_service_proto_msgTypes[7]
+		mi := &file_proto_service_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -608,7 +568,7 @@ func (x *Url) String() string {
 func (*Url) ProtoMessage() {}
 
 func (x *Url) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_service_proto_msgTypes[7]
+	mi := &file_proto_service_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -621,7 +581,7 @@ func (x *Url) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Url.ProtoReflect.Descriptor instead.
 func (*Url) Descriptor() ([]byte, []int) {
-	return file_proto_service_proto_rawDescGZIP(), []int{7}
+	return file_proto_service_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *Url) GetUrlHeader() Url_UrlHeader {
@@ -643,24 +603,23 @@ var File_proto_service_proto protoreflect.FileDescriptor
 var file_proto_service_proto_rawDesc = []byte{
 	0x0a, 0x13, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e,
 	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x08, 0x74, 0x65, 0x72, 0x6d, 0x76, 0x6f, 0x69, 0x64, 0x22,
-	0x26, 0x0a, 0x0c, 0x55, 0x70, 0x6c, 0x6f, 0x61, 0x64, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x12,
-	0x16, 0x0a, 0x06, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x06, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x22, 0x21, 0x0a, 0x0b, 0x46, 0x69, 0x6c, 0x65, 0x43,
-	0x6f, 0x6e, 0x74, 0x65, 0x6e, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x64, 0x61, 0x74, 0x61, 0x18, 0x01,
-	0x20, 0x01, 0x28, 0x0c, 0x52, 0x04, 0x64, 0x61, 0x74, 0x61, 0x22, 0x8f, 0x01, 0x0a, 0x0b, 0x46,
-	0x69, 0x6c, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x3c, 0x0a, 0x0c, 0x72, 0x65,
-	0x71, 0x75, 0x65, 0x73, 0x74, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0e,
-	0x32, 0x19, 0x2e, 0x74, 0x65, 0x72, 0x6d, 0x76, 0x6f, 0x69, 0x64, 0x2e, 0x46, 0x69, 0x6c, 0x65,
-	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x54, 0x79, 0x70, 0x65, 0x52, 0x0b, 0x72, 0x65, 0x71,
-	0x75, 0x65, 0x73, 0x74, 0x54, 0x79, 0x70, 0x65, 0x12, 0x42, 0x0a, 0x0f, 0x66, 0x69, 0x6c, 0x65,
-	0x5f, 0x69, 0x64, 0x65, 0x6e, 0x74, 0x69, 0x66, 0x69, 0x65, 0x72, 0x18, 0x02, 0x20, 0x01, 0x28,
-	0x0e, 0x32, 0x19, 0x2e, 0x74, 0x65, 0x72, 0x6d, 0x76, 0x6f, 0x69, 0x64, 0x2e, 0x46, 0x69, 0x6c,
-	0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x54, 0x79, 0x70, 0x65, 0x52, 0x0e, 0x66, 0x69,
-	0x6c, 0x65, 0x49, 0x64, 0x65, 0x6e, 0x74, 0x69, 0x66, 0x69, 0x65, 0x72, 0x22, 0x3c, 0x0a, 0x0c,
-	0x46, 0x69, 0x6c, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x2c, 0x0a, 0x05,
-	0x66, 0x69, 0x6c, 0x65, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x16, 0x2e, 0x74, 0x65,
-	0x72, 0x6d, 0x76, 0x6f, 0x69, 0x64, 0x2e, 0x46, 0x69, 0x6c, 0x65, 0x4d, 0x65, 0x74, 0x61, 0x64,
-	0x61, 0x74, 0x61, 0x52, 0x05, 0x66, 0x69, 0x6c, 0x65, 0x73, 0x22, 0x0d, 0x0a, 0x0b, 0x46, 0x69,
+	0x21, 0x0a, 0x0b, 0x46, 0x69, 0x6c, 0x65, 0x43, 0x6f, 0x6e, 0x74, 0x65, 0x6e, 0x74, 0x12, 0x12,
+	0x0a, 0x04, 0x64, 0x61, 0x74, 0x61, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0c, 0x52, 0x04, 0x64, 0x61,
+	0x74, 0x61, 0x22, 0x8f, 0x01, 0x0a, 0x0b, 0x46, 0x69, 0x6c, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x12, 0x3c, 0x0a, 0x0c, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x5f, 0x74, 0x79,
+	0x70, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x19, 0x2e, 0x74, 0x65, 0x72, 0x6d, 0x76,
+	0x6f, 0x69, 0x64, 0x2e, 0x46, 0x69, 0x6c, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x54,
+	0x79, 0x70, 0x65, 0x52, 0x0b, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x54, 0x79, 0x70, 0x65,
+	0x12, 0x42, 0x0a, 0x0f, 0x66, 0x69, 0x6c, 0x65, 0x5f, 0x69, 0x64, 0x65, 0x6e, 0x74, 0x69, 0x66,
+	0x69, 0x65, 0x72, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x19, 0x2e, 0x74, 0x65, 0x72, 0x6d,
+	0x76, 0x6f, 0x69, 0x64, 0x2e, 0x46, 0x69, 0x6c, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x54, 0x79, 0x70, 0x65, 0x52, 0x0e, 0x66, 0x69, 0x6c, 0x65, 0x49, 0x64, 0x65, 0x6e, 0x74, 0x69,
+	0x66, 0x69, 0x65, 0x72, 0x22, 0x54, 0x0a, 0x0c, 0x46, 0x69, 0x6c, 0x65, 0x52, 0x65, 0x73, 0x70,
+	0x6f, 0x6e, 0x73, 0x65, 0x12, 0x2c, 0x0a, 0x05, 0x66, 0x69, 0x6c, 0x65, 0x73, 0x18, 0x01, 0x20,
+	0x03, 0x28, 0x0b, 0x32, 0x16, 0x2e, 0x74, 0x65, 0x72, 0x6d, 0x76, 0x6f, 0x69, 0x64, 0x2e, 0x46,
+	0x69, 0x6c, 0x65, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x52, 0x05, 0x66, 0x69, 0x6c,
+	0x65, 0x73, 0x12, 0x16, 0x0a, 0x06, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x06, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x22, 0x0d, 0x0a, 0x0b, 0x46, 0x69,
 	0x6c, 0x65, 0x48, 0x69, 0x73, 0x74, 0x6f, 0x72, 0x79, 0x22, 0xf9, 0x01, 0x0a, 0x0c, 0x46, 0x69,
 	0x6c, 0x65, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x12, 0x0e, 0x0a, 0x02, 0x49, 0x44,
 	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x49, 0x44, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61,
@@ -738,36 +697,35 @@ func file_proto_service_proto_rawDescGZIP() []byte {
 }
 
 var file_proto_service_proto_enumTypes = make([]protoimpl.EnumInfo, 3)
-var file_proto_service_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
+var file_proto_service_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_proto_service_proto_goTypes = []interface{}{
 	(FileRequestType)(0),   // 0: termvoid.FileRequestType
 	(MIME)(0),              // 1: termvoid.MIME
 	(Url_UrlHeader)(0),     // 2: termvoid.Url.UrlHeader
-	(*UploadStatus)(nil),   // 3: termvoid.UploadStatus
-	(*FileContent)(nil),    // 4: termvoid.FileContent
-	(*FileRequest)(nil),    // 5: termvoid.FileRequest
-	(*FileResponse)(nil),   // 6: termvoid.FileResponse
-	(*FileHistory)(nil),    // 7: termvoid.FileHistory
-	(*FileMetadata)(nil),   // 8: termvoid.FileMetadata
-	(*ExpirationDate)(nil), // 9: termvoid.ExpirationDate
-	(*Url)(nil),            // 10: termvoid.Url
+	(*FileContent)(nil),    // 3: termvoid.FileContent
+	(*FileRequest)(nil),    // 4: termvoid.FileRequest
+	(*FileResponse)(nil),   // 5: termvoid.FileResponse
+	(*FileHistory)(nil),    // 6: termvoid.FileHistory
+	(*FileMetadata)(nil),   // 7: termvoid.FileMetadata
+	(*ExpirationDate)(nil), // 8: termvoid.ExpirationDate
+	(*Url)(nil),            // 9: termvoid.Url
 }
 var file_proto_service_proto_depIdxs = []int32{
 	0,  // 0: termvoid.FileRequest.request_type:type_name -> termvoid.FileRequestType
 	0,  // 1: termvoid.FileRequest.file_identifier:type_name -> termvoid.FileRequestType
-	8,  // 2: termvoid.FileResponse.files:type_name -> termvoid.FileMetadata
+	7,  // 2: termvoid.FileResponse.files:type_name -> termvoid.FileMetadata
 	1,  // 3: termvoid.FileMetadata.mime:type_name -> termvoid.MIME
-	9,  // 4: termvoid.FileMetadata.expiration_date:type_name -> termvoid.ExpirationDate
-	10, // 5: termvoid.FileMetadata.share_link:type_name -> termvoid.Url
+	8,  // 4: termvoid.FileMetadata.expiration_date:type_name -> termvoid.ExpirationDate
+	9,  // 5: termvoid.FileMetadata.share_link:type_name -> termvoid.Url
 	2,  // 6: termvoid.Url.url_header:type_name -> termvoid.Url.UrlHeader
-	4,  // 7: termvoid.FileService.UploadFile:input_type -> termvoid.FileContent
-	5,  // 8: termvoid.FileService.DownloadFile:input_type -> termvoid.FileRequest
-	5,  // 9: termvoid.FileService.GetFileInfo:input_type -> termvoid.FileRequest
-	5,  // 10: termvoid.FileService.GetFileHistory:input_type -> termvoid.FileRequest
-	6,  // 11: termvoid.FileService.UploadFile:output_type -> termvoid.FileResponse
-	4,  // 12: termvoid.FileService.DownloadFile:output_type -> termvoid.FileContent
-	8,  // 13: termvoid.FileService.GetFileInfo:output_type -> termvoid.FileMetadata
-	7,  // 14: termvoid.FileService.GetFileHistory:output_type -> termvoid.FileHistory
+	3,  // 7: termvoid.FileService.UploadFile:input_type -> termvoid.FileContent
+	4,  // 8: termvoid.FileService.DownloadFile:input_type -> termvoid.FileRequest
+	4,  // 9: termvoid.FileService.GetFileInfo:input_type -> termvoid.FileRequest
+	4,  // 10: termvoid.FileService.GetFileHistory:input_type -> termvoid.FileRequest
+	5,  // 11: termvoid.FileService.UploadFile:output_type -> termvoid.FileResponse
+	3,  // 12: termvoid.FileService.DownloadFile:output_type -> termvoid.FileContent
+	7,  // 13: termvoid.FileService.GetFileInfo:output_type -> termvoid.FileMetadata
+	6,  // 14: termvoid.FileService.GetFileHistory:output_type -> termvoid.FileHistory
 	11, // [11:15] is the sub-list for method output_type
 	7,  // [7:11] is the sub-list for method input_type
 	7,  // [7:7] is the sub-list for extension type_name
@@ -782,18 +740,6 @@ func file_proto_service_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_proto_service_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UploadStatus); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_proto_service_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*FileContent); i {
 			case 0:
 				return &v.state
@@ -805,7 +751,7 @@ func file_proto_service_proto_init() {
 				return nil
 			}
 		}
-		file_proto_service_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+		file_proto_service_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*FileRequest); i {
 			case 0:
 				return &v.state
@@ -817,7 +763,7 @@ func file_proto_service_proto_init() {
 				return nil
 			}
 		}
-		file_proto_service_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+		file_proto_service_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*FileResponse); i {
 			case 0:
 				return &v.state
@@ -829,7 +775,7 @@ func file_proto_service_proto_init() {
 				return nil
 			}
 		}
-		file_proto_service_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+		file_proto_service_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*FileHistory); i {
 			case 0:
 				return &v.state
@@ -841,7 +787,7 @@ func file_proto_service_proto_init() {
 				return nil
 			}
 		}
-		file_proto_service_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+		file_proto_service_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*FileMetadata); i {
 			case 0:
 				return &v.state
@@ -853,7 +799,7 @@ func file_proto_service_proto_init() {
 				return nil
 			}
 		}
-		file_proto_service_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+		file_proto_service_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*ExpirationDate); i {
 			case 0:
 				return &v.state
@@ -865,7 +811,7 @@ func file_proto_service_proto_init() {
 				return nil
 			}
 		}
-		file_proto_service_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
+		file_proto_service_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Url); i {
 			case 0:
 				return &v.state
@@ -884,7 +830,7 @@ func file_proto_service_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_proto_service_proto_rawDesc,
 			NumEnums:      3,
-			NumMessages:   8,
+			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

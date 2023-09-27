@@ -16,12 +16,6 @@ service FileService {
 
 // ========================== MESSAGES ==============================
 
-// --------------
-message UploadStatus {
-    string status = 1;
-}
-// --------------
-
 message FileContent {
     bytes data = 1;
 }
@@ -34,6 +28,7 @@ message FileRequest {
 
 message FileResponse {
     repeated FileMetadata files = 1;
+    string status = 2;  // Status field for indicating upload status
 }
 
 message FileHistory {
