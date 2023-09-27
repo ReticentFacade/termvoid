@@ -16,6 +16,12 @@ service FileService {
 
 // ========================== MESSAGES ==============================
 
+// --------------
+message UploadStatus {
+    string status = 1;
+}
+// --------------
+
 message FileContent {
     bytes data = 1;
 }

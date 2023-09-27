@@ -1,15 +1,15 @@
 package cmd
 
 import (
+	"context"
 	"fmt"
 	"io"
-	"net/http"
+	"log"
 	"os"
-	"time"
-	"void/utils"
 
 	pb "github.com/ReticentFacade/termvoid/pkg/proto"
 	"github.com/spf13/cobra"
+	"google.golang.org/grpc"
 )
 
 var uploadCmd = &cobra.Command{
@@ -19,71 +19,75 @@ var uploadCmd = &cobra.Command{
 	Usage:
 	void upload [FILE]`,
 	Run: func(cmd *cobra.Command, args []string) {
-		filePath := args[0]
+		// Initialize gRPC connection:
 
-		// Check if file exists
-		fileExists, err := utils.IfFileExists(filePath)
+		// Set up a connection to the gRPC server:
+		conn, err := grpc.Dial("localhost:9000", grpc.WithInsecure())
 		if err != nil {
-			fmt.Println("Error while checking file existence: ", err)
-			return
+			log.Fatal("Failed to dial server: ", err)
 		}
-		if !fileExists {
-			fmt.Println("File does not exist at: ", filePath)
-			return
-		}
+		defer conn.Close()
 
-		// ====================
-		// Assigning metadata and uploading logic here
-		url := "http://localhost:8080/upload"
-		file, err := os.Open(filePath)
+		// Create grpc client:
+		client := pb.NewFileServiceClient(conn)
+
+		// Specify path to file that's to be uploaded:
+		localFilePath := args[0]
+
+		// Specify destinationPath in Firebase Storage:
+		destinationPath := "voidFiles/"
+
+		// Open the local file for reading:
+		file, err := os.Open(localFilePath)
 		if err != nil {
-			fmt.Println("Error while opening file: ", err)
-			return
+			log.Fatal("Error opening file: ", err)
 		}
 		defer file.Close()
 
-		// --------------------
-		// Assigning metadata:
-		fileID, err := utils.GenerateID()
+		// ============================================================
+
+		// Create context with a timeout:
+		ctx := context.Background()
+
+		// Create gRPC stream for uploading the file:
+		stream, err := client.UploadFile(ctx)
 		if err != nil {
-			fmt.Println("Error while generating ID: ", err)
-			return
+			log.Fatal("Error creating stream: ", err)
 		}
-		fmt.Println("upload.go: File ID: ", fileID)
+		defer stream.CloseSend()
 
-		downloadsAllowed := 10
-		fmt.Println("upload.go: Downloads allowed: ", downloadsAllowed)
+		// Send the fileName to the server:
+		if err := stream.Send(&pb.FileContent{Data: []byte(destinationPath)}); err != nil {
+			log.Fatal("Error sending fileName to server: ", err)
+		}
 
-		expirationDate := time.Now().Add(24 * time.Hour)
-		fmt.Println("upload.go: Expiration date: ", expirationDate)
-		// --------------------
+		// Create buffer for reading the file in chunks:
+		buffer := make([]byte, 1024)
 
-		// Create a multipart/form-data req:
-		client := &http.Client{}
-		req, err := http.NewRequest("POST", url, file)
+		// Read & send the file chunks to the server:
+		for {
+			n, err := file.Read(buffer)
+			if err != nil {
+				log.Fatal("Error reading file: ", err)
+			}
+			if n == 0 {
+				break
+			}
+
+			// Send the chunk to the server:
+			if err := stream.Send(&pb.FileContent{Data: buffer[:n]}); err != nil {
+				log.Fatal("Error sending chunk to server: ", err)
+			}
+		}
+
+		// ============================================================
+		// Receive response from server:
+		response, err := stream.CloseAndRecv()
 		if err != nil {
-			fmt.Println("Error while creating request: ", err)
+			log.Fatal("Error receiving response from server: ", err)
 		}
-		fmt.Println("Request: ", req)
-		req.Header.Set("Content-Type", "multipart/form-data")
 
-		// Send the req:
-		resp, err := client.Do(req)
-		if err != nil {
-			fmt.Println("Error while sending request: ", err)
-			return
-		}
-		defer resp.Body.Close()
-
-		// Check the resp:
-		if resp.StatusCode == http.StatusOK {
-			fmt.Println("File uploaded successfully! 😁 \nStatus: ", resp.StatusCode)
-		} else {
-			fmt.Println("Error while uploading file! 😢 \nStatus: ", resp.StatusCode)
-		}
-		// ====================
-
-		fmt.Println("File uploaded successfully!")
+		fmt.Println("Upload status:", response.Status)
 	},
 }
 
