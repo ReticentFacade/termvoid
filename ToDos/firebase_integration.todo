@@ -3,40 +3,44 @@ termvoid/
 |- firebase/
 |        |
 |        |
-|        ☐ - - firebase.go: Handles `InitializeFirebase` function
+         ✔ - - firebase.go: Handles `InitializeFirebase` function @done (28/09/2023, 21:29:23)
 |        |
 |        |
-|        ☐ - - upload.go: Handles `UploadFileToFirebase` function
+         ✔ - - upload.go: Handles `UploadFileToFirebase` function @done (28/09/2023, 21:29:33)
 |
 |
 |- void/
     |
     |
-    ☐ - - server.go: Calls `InitializeFirebase` for Firebase app initialization and implements gRPC methods.
+    ✔ - - server.go: Calls `InitializeFirebase` for Firebase app initialization and implements gRPC methods. @done (28/09/2023, 21:29:38)
     |
     |
     ☐ - - cmd/
             |
             |
-            ☐ - - upload.go: Initiates the file upload by calling gRPC's `UploadFile` method.
+            ✔ - - upload.go: Initiates the file upload by calling gRPC's `UploadFile` method. @done (28/09/2023, 21:29:40)
+
++------+
+// FOR PROVIDING FILE_URLS, REFER TO: https://firebase.google.com/docs/storage/admin/start#shareable_urls
++------+
 
 FLOW:
-    ☐ firebase/firebase.go: FIREBASE INITIALIZATION
+    ✔ firebase/firebase.go: FIREBASE INITIALIZATION @done (28/09/2023, 21:29:49)
         - Define `InitializeFirebase` function for Firebase app initialization in firebase/firebase.go.
 
-    ☐ firebase/upload.go: STORAGE LOGIC
+    ✔ firebase/upload.go: STORAGE LOGIC @done (28/09/2023, 21:29:50)
         - Create `UploadFileToFirebase` function in firebase/upload.go to handle the specific logic for uploading files to Firebase Storage. Utilize `InitializeFirebase` for Firebase app setup.
 
-    ☐ void/server.go: SERVER INITIALIZATION
+    ✔ void/server.go: SERVER INITIALIZATION @done (28/09/2023, 21:30:03)
         - It calls `InitializeFirebase` function from firebase/firebase.go because this makes sure that the Firebase app is initialized before we try to upload a file to Firebase Storage & it ensures that your server is ready to interact with Firebase.
 
-    ☐ void/server.go: GRPC SERVICE IMPLEMENTATION & GRPC IMPLEMENTATION
+    ✔ void/server.go: GRPC SERVICE IMPLEMENTATION & GRPC IMPLEMENTATION @done (28/09/2023, 21:30:06)
         - Initialize Firebase using `InitializeFirebase` to ensure proper setup before interactions with Firebase.
     
         - Implement gRPC's `UploadFile` method here. 
         - Within `UploadFile`, call `UploadFileToFirebase` to handle the actual file upload to Firebase Storage.
     
-    ☐ void/cmd/upload.go: COMMAND EXECUTION
+    ✔ void/cmd/upload.go: COMMAND EXECUTION @done (29/09/2023, 11:33:23)
         - In the command file (upload.go), initiate file uploads by calling gRPC's `UploadFile` method.
         
 

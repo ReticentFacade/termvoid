@@ -2,11 +2,17 @@ module void
 
 go 1.21.1
 
+// require github.com/ReticentFacade/termvoid/firebase v0.0.0
 require (
 	github.com/ReticentFacade/termvoid/pkg v0.0.0-20230925041327-3d36a431a642
 	github.com/google/uuid v1.3.1
 	github.com/spf13/cobra v1.7.0
 	google.golang.org/grpc v1.58.2
+)
+
+require (
+	github.com/ReticentFacade/termvoid/firebase v0.0.0-20230928095807-562712d9b0c1
+	github.com/joho/godotenv v1.5.1
 )
 
 require (

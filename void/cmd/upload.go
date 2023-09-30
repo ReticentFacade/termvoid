@@ -8,7 +8,8 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/ReticentFacade/termvoid/firebase"
+	// "github.com/ReticentFacade/termvoid/firebase"
+	firebase "github.com/ReticentFacade/termvoid/firebase"
 
 	pb "github.com/ReticentFacade/termvoid/pkg/proto"
 	"github.com/spf13/cobra"
@@ -61,6 +62,8 @@ var uploadCmd = &cobra.Command{
 
 		// Create gRPC stream for uploading the file:
 		stream, err := client.UploadFile(ctx)
+		fmt.Println("Stream created successfully...")
+		fmt.Println("Stream ----> ", stream)
 		if err != nil {
 			log.Fatal("Error creating stream: ", err)
 		}
@@ -82,6 +85,7 @@ var uploadCmd = &cobra.Command{
 			if err != nil {
 				if err == io.EOF {
 					// Reached the EndOfFile, exit the loop
+					fmt.Println("End of file reached.")
 					break
 				} else {
 					log.Fatal("Error reading file: ", err)
@@ -109,7 +113,7 @@ var uploadCmd = &cobra.Command{
 		fmt.Println("Upload status:", response.Status)
 
 		// Initialize Firebase app and upload the file to Firebase Storage
-		app, err := firebase.InitializeFirebaseApp(ctx)
+		app, err := firebase.InitializeFirebase(ctx)
 		if err != nil {
 			log.Fatal("Error initializing Firebase app: ", err)
 		}
@@ -119,23 +123,6 @@ var uploadCmd = &cobra.Command{
 			log.Fatal("Error uploading file to Firebase: ", err)
 		}
 	},
-}
-
-// FOR PROVIDING FILE_URLS, REFER TO: https://firebase.google.com/docs/storage/admin/start#shareable_urls
-
-func UploadFile(stream pb.FileService_UploadFileServer) error {
-	for {
-		fileChunk, err := stream.Recv()
-		if err != nil {
-			if err == io.EOF {
-				return stream.SendAndClose(&pb.FileResponse{})
-			}
-			return err
-		}
-
-		// Implement upload logic
-		fmt.Printf("Received %d bytes of data\n", len(fileChunk.Data))
-	}
 }
 
 func init() {

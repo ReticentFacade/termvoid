@@ -11,9 +11,9 @@ import (
 	"google.golang.org/api/option"
 )
 
-// Initializing Firebase app WITHOUT any authentication for now.
-// TODO: Add authentication.
-func InitializeFirebase() (*firebase.App, error) {
+// // Initializing Firebase app WITHOUT any authentication for now.
+// // TODO: Add authentication.
+func InitializeFirebase(ctx context.Context) (*firebase.App, error) {
 	// Load env variables:
 	err := godotenv.Load()
 	if err != nil {
