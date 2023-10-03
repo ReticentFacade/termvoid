@@ -1,4 +1,4 @@
-package main
+package server
 
 import (
 	"fmt"
@@ -14,9 +14,14 @@ import (
 	"google.golang.org/grpc/reflection"
 )
 
-type server struct {
+type Server struct {
 	// UnimplementedFileServiceServer type needs to be embedded
 	pb.UnimplementedFileServiceServer
+}
+
+// Exported function to create an instance of the Server [`NewServer()` = a constructor for the Server type]:
+func NewServer() *Server {
+	return &Server{}
 }
 
 func ServerStartup() {
@@ -32,7 +37,7 @@ func ServerStartup() {
 	// Register server reflection service:
 	reflection.Register(grpcServer)
 	// Registering service methods:
-	pb.RegisterFileServiceServer(grpcServer, &server{})
+	pb.RegisterFileServiceServer(grpcServer, &Server{})
 	fmt.Println("Registered service methods successfully!")
 	// TODO: Add more from info.go and history.go later
 
@@ -49,15 +54,15 @@ func ServerStartup() {
 	fmt.Println("Server started successfully...")
 }
 
-func UploadFile(stream pb.FileService_UploadFileServer) error {
+func UploadFile(stream pb.FileService_UploadFileServer) (err error) {
 	fmt.Println("UploadFile() invoked...")
 	for {
 		fileChunk, err := stream.Recv()
 		fmt.Println("Received file chunk", fileChunk)
 		if err != nil {
 			if err == io.EOF {
-				// return stream.SendAndClose(&pb.FileResponse{})
-				return stream.SendAndClose(&pb.FileResponse{Status: "Upload successful"})
+				// Return nil to indicate successful completion
+				return nil
 			}
 			return err
 		}
@@ -66,5 +71,23 @@ func UploadFile(stream pb.FileService_UploadFileServer) error {
 		fmt.Printf("Received %d bytes of data\n", len(fileChunk.Data))
 	}
 }
+
+// func UploadFile(stream pb.FileService_UploadFileServer) error {
+// 	fmt.Println("UploadFile() invoked...")
+// 	for {
+// 		fileChunk, err := stream.Recv()
+// 		fmt.Println("Received file chunk", fileChunk)
+// 		if err != nil {
+// 			if err == io.EOF {
+// 				// return stream.SendAndClose(&pb.FileResponse{})
+// 				return stream.SendAndClose(&pb.FileResponse{Status: "Upload successful"})
+// 			}
+// 			return err
+// 		}
+
+// 		// Implement upload logic
+// 		fmt.Printf("Received %d bytes of data\n", len(fileChunk.Data))
+// 	}
+// }
 
 // Other methods for GetFileInfo, DownloadFile, and GetFileHistory...

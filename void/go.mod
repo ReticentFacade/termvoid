@@ -2,17 +2,14 @@ module void
 
 go 1.21.1
 
-// require github.com/ReticentFacade/termvoid/firebase v0.0.0
 require (
+	github.com/ReticentFacade/termvoid/firebase v0.0.0-20230930101037-0942a3df84c7
 	github.com/ReticentFacade/termvoid/pkg v0.0.0-20230925041327-3d36a431a642
 	github.com/google/uuid v1.3.1
-	github.com/spf13/cobra v1.7.0
-	google.golang.org/grpc v1.58.2
-)
-
-require (
-	github.com/ReticentFacade/termvoid/firebase v0.0.0-20230928095807-562712d9b0c1
 	github.com/joho/godotenv v1.5.1
+	github.com/spf13/cobra v1.7.0
+	golang.org/x/net v0.15.0
+	google.golang.org/grpc v1.58.2
 )
 
 require (
@@ -35,12 +32,11 @@ require (
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	go.opencensus.io v0.24.0 // indirect
-	golang.org/x/crypto v0.11.0 // indirect
-	golang.org/x/net v0.12.0 // indirect
+	golang.org/x/crypto v0.13.0 // indirect
 	golang.org/x/oauth2 v0.10.0 // indirect
 	golang.org/x/sync v0.3.0 // indirect
-	golang.org/x/sys v0.10.0 // indirect
-	golang.org/x/text v0.11.0 // indirect
+	golang.org/x/sys v0.12.0 // indirect
+	golang.org/x/text v0.13.0 // indirect
 	golang.org/x/time v0.3.0 // indirect
 	golang.org/x/xerrors v0.0.0-20220907171357-04be3eba64a2 // indirect
 	google.golang.org/api v0.126.0 // indirect

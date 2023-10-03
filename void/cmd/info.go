@@ -4,7 +4,8 @@ Copyright © 2023 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
-	"context"
+	"golang.org/x/net/context"
+	// "context"
 	"fmt"
 
 	pb "github.com/ReticentFacade/termvoid/pkg/proto"

@@ -1,16 +1,17 @@
 package cmd
 
 import (
-	"context"
+	"golang.org/x/net/context"
+	// "context"
 	"fmt"
 	"io"
 	"log"
 	"os"
 	"path/filepath"
 
-	// "github.com/ReticentFacade/termvoid/firebase"
-	firebase "github.com/ReticentFacade/termvoid/firebase"
+	"void/server"
 
+	firebase "github.com/ReticentFacade/termvoid/firebase"
 	pb "github.com/ReticentFacade/termvoid/pkg/proto"
 	"github.com/spf13/cobra"
 	"google.golang.org/grpc"
@@ -36,7 +37,9 @@ var uploadCmd = &cobra.Command{
 		fmt.Println("Connected to server successfully!")
 
 		// Create grpc client:
+		// !!!!!!!!!!!!!!!!!!!!!
 		client := pb.NewFileServiceClient(conn)
+		// client := pb.NewFileServiceClient(conn)
 
 		// Specify path to file that's to be uploaded:
 		localFilePath := args[0]
@@ -60,8 +63,16 @@ var uploadCmd = &cobra.Command{
 		fmt.Println("Creating context...")
 		ctx := context.Background()
 
+		// ------------------------------------------------------------
+		// Create an instance of the server type
+		// srv := server.Server{}
+		srv := server.NewServer()
+		fmt.Println("srv:", srv)
+		// ------------------------------------------------------------
+
 		// Create gRPC stream for uploading the file:
 		stream, err := client.UploadFile(ctx)
+		// stream, err := server.UploadFile(ctx)
 		fmt.Println("Stream created successfully...")
 		fmt.Println("Stream ----> ", stream)
 		if err != nil {
