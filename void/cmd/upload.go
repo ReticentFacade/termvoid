@@ -11,7 +11,6 @@ import (
 
 	"void/server"
 
-	firebase "github.com/ReticentFacade/termvoid/firebase"
 	pb "github.com/ReticentFacade/termvoid/pkg/proto"
 	"github.com/spf13/cobra"
 	"google.golang.org/grpc"
@@ -44,6 +43,7 @@ var uploadCmd = &cobra.Command{
 		// Specify path to file that's to be uploaded:
 		localFilePath := args[0]
 		fileName := filepath.Base(localFilePath)
+		fmt.Println("fileName:", fileName)
 
 		// Specify destinationPath in Firebase Storage:
 		destinationPath := "voidFiles/"
@@ -124,15 +124,6 @@ var uploadCmd = &cobra.Command{
 		fmt.Println("Upload status:", response.Status)
 
 		// Initialize Firebase app and upload the file to Firebase Storage
-		app, err := firebase.InitializeFirebase(ctx)
-		if err != nil {
-			log.Fatal("Error initializing Firebase app: ", err)
-		}
-		// Initialize Firebase app and upload the file to Firebase Storage
-		err = firebase.UploadFileToFirebase(ctx, app, file, fileName, destinationPath)
-		if err != nil {
-			log.Fatal("Error uploading file to Firebase: ", err)
-		}
 	},
 }
 

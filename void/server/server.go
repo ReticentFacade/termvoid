@@ -9,6 +9,7 @@ import (
 
 	pb "github.com/ReticentFacade/termvoid/pkg/proto"
 	"github.com/joho/godotenv"
+	// "github.com/joho/godotenv"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"

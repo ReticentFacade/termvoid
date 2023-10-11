@@ -1,8 +1,11 @@
 package main
 
-import "void/cmd"
+import (
+	"void/cmd"
+	"void/server"
+)
 
 func main() {
 	cmd.Execute()
-	ServerStartup()
+	server.ServerStartup()
 }
