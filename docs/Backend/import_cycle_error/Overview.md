@@ -1,4 +1,4 @@
-# File Structure:
+# Directory Structure:
 ```
 +----------+
 | Termvoid |
@@ -32,7 +32,7 @@
 |  (proto files) | 
 +---------------+|+------------------------------------+       
                                   |
-                         `Proto files are imported in`
+                        Proto files are imported in
                                   |
                             +-----------+
                             |    void   | {Also uses `github.com/joho/godotenv` (for accessing .env variables). Hence, the `import cycle error`}
@@ -42,5 +42,8 @@
 ```
 ----
 
-# Folders Facing/Causing Import Cycle Error:
+# Folders Facing/Causing Similar Import Cycle Error:
 
+```
+firebase/firebase.go
+```
