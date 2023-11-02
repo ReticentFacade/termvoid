@@ -1,5 +1,5 @@
 # File Structure:
-
+```sh
 +----------+
 | Termvoid |
 +----------+
@@ -21,7 +21,21 @@
 +--------+
 |  void  | --> CLI code
 +--------+
+```
+----
 
+# Flow Intended:
+
+```
++--------+
+|  void  |
+| (CLI)  | +------------------------+
++--------+          |
+              +-----------+
+              |           |
+              +-----------+
+
+```
 ----
 
 # Folders Facing/Causing Import Cycle Error:
