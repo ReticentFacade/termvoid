@@ -35,8 +35,8 @@
                         Proto files are imported in
                                   |
                             +-----------+
-                            |    void   | {Also uses `github.com/joho/godotenv` (for accessing .env variables). Hence, the `import cycle error`}
-                            |    (CLI)  |
+                            |   void    | {Also uses `github.com/joho/godotenv` (for accessing .env variables). Hence, the `import cycle error`}
+                            |   (CLI)   |
                             +-----------+
 
 ```
@@ -44,6 +44,6 @@
 
 # Folders Facing/Causing Similar Import Cycle Error:
 
-```
-firebase/firebase.go
-```
+1. `firebase/firebase.go`
+2. `pkg/proto/service_grpc.pb.go`
+3. `void/server/server.go`
