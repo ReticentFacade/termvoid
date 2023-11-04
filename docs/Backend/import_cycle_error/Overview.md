@@ -44,6 +44,6 @@
 
 # Folders Facing/Causing Similar Import Cycle Error:
 
-1. `firebase/firebase.go`
-2. `pkg/proto/service_grpc.pb.go`
-3. `void/server/server.go`
+1. [firebase/firebase.go](https://github.com/ReticentFacade/termvoid/blob/master/firebase/firebase.go)
+2. [pkg/proto/service_grpc.pb.go](https://github.com/ReticentFacade/termvoid/blob/master/pkg/proto/service_grpc.pb.go)
+3. [void/server/server.go](https://github.com/ReticentFacade/termvoid/blob/master/void/server/server.go)
