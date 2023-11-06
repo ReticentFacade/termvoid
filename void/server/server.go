@@ -1,14 +1,14 @@
 package server
 
 import (
+	"config"
 	"fmt"
 	"io"
 	"log"
 	"net"
-	"os"
 
 	pb "github.com/ReticentFacade/termvoid/pkg/proto"
-	"github.com/joho/godotenv"
+
 	// "github.com/joho/godotenv"
 
 	"google.golang.org/grpc"
@@ -27,12 +27,14 @@ func NewServer() *Server {
 
 func ServerStartup() {
 	// Load env variables:
-	err := godotenv.Load()
+	// err := godotenv.Load()
+	err := config.LoadEnv()
 	if err != nil {
 		log.Fatal("Error loading .env file: ", err)
 	}
 	// Retrieve env variable:
-	PORT := os.Getenv("GRPC_PORT")
+	// PORT := os.Getenv("GRPC_PORT")
+	PORT := config.GetGRPCPort()
 
 	grpcServer := grpc.NewServer()
 	// Register server reflection service:

@@ -4,6 +4,6 @@ DownloadedFiles/
 *.html
 
 
-*/target/*
+target
 Cargo.lock
 firebase/termvoid_project_key.json

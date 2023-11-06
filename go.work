@@ -4,4 +4,5 @@ use (
 	./firebase
 	./pkg/proto
 	./void
+	./config
 )

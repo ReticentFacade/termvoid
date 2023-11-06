@@ -1,14 +1,14 @@
 package firebase
 
 import (
-	// "golang.org/x/net/context"
-	"context"
+	"golang.org/x/net/context"
+	// "context"
+	"config"
 	"fmt"
 	"log"
-	"os"
 
 	firebase "firebase.google.com/go/v4"
-	"github.com/joho/godotenv"
+	// "github.com/joho/godotenv"
 	"google.golang.org/api/option"
 )
 
@@ -16,17 +16,18 @@ import (
 // // TODO: Add authentication.
 func InitializeFirebase(ctx context.Context) (*firebase.App, error) {
 	// Load env variables:
-	err := godotenv.Load()
+	err := config.LoadEnv()
 	if err != nil {
 		log.Fatal("Error loading .env file: ", err)
 	}
 
 	// Retrieve env variable:
-	storageBucketName := os.Getenv("STORAGE_BUCKET_NAME")
+	// storageBucketName := os.Getenv("STORAGE_BUCKET_NAME")
+	storageBucketName := config.GetStorageBucketName()
 	fmt.Println("firebase.go: Storage bucket name: ", storageBucketName)
 
-	serviceAccountKeyPath := os.Getenv("SERVICE_ACCOUNT_KEY_PATH")
-
+	// serviceAccountKeyPath := os.Getenv("SERVICE_ACCOUNT_KEY_PATH")
+	serviceAccountKeyPath := config.GetServiceAccountKeyPath()
 	// Set up storage config:
 	config := &firebase.Config{
 		StorageBucket: storageBucketName,

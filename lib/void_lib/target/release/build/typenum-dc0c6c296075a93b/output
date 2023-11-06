@@ -1,3 +1,0 @@
-cargo:rerun-if-changed=build/main.rs
-cargo:rustc-env=TYPENUM_BUILD_CONSTS=/Users/Reticent/Desktop/Work/ProjectWorkspace/github/termvoid/lib/void_lib/target/release/build/typenum-dc0c6c296075a93b/out/consts.rs
-cargo:rustc-env=TYPENUM_BUILD_OP=/Users/Reticent/Desktop/Work/ProjectWorkspace/github/termvoid/lib/void_lib/target/release/build/typenum-dc0c6c296075a93b/out/op.rs
