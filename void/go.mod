@@ -3,12 +3,12 @@ module void
 go 1.21.1
 
 require (
-	github.com/ReticentFacade/termvoid/pkg v0.0.0-20230925041327-3d36a431a642
+	github.com/ReticentFacade/termvoid/pkg v0.0.0-20230925041327-3d36a431a642 // indirect
 	github.com/google/uuid v1.3.1
 	// github.com/joho/godotenv v1.5.1
 	github.com/spf13/cobra v1.7.0
-	golang.org/x/net v0.15.0
-	google.golang.org/grpc v1.58.2
+	golang.org/x/net v0.15.0 // indirect
+	google.golang.org/grpc v1.58.2 // indirect
 )
 
 require (

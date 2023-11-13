@@ -2,10 +2,10 @@ package main
 
 import (
 	"void/cmd"
-	"void/server"
+	// "void/server"
 )
 
 func main() {
 	cmd.Execute()
-	server.ServerStartup()
+	// server.ServerStartup()
 }

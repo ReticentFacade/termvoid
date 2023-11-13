@@ -2,7 +2,7 @@ go 1.21.1
 
 use (
 	./firebase
-	./pkg/proto
+	./pkg
 	./void
 	./config
 )
