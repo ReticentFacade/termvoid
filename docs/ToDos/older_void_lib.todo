@@ -1,0 +1,59 @@
+Some concept [`std::fs` vs Buffers]:  
+    - `std::fs`: use `std::fs` for tasks like checking if a path exists, creating, reading, writing, and deleting files or directories, and obtaining file metadata. It's the primary Rust module for file management tasks.
+
+    - Buffers: used when reading or writing files for efficiency reasons.Use buffers to read a larger chunk of data from a file into memory and then process that data in memory, which can be faster than reading small pieces of data at a time. Similarly, when writing data to a file, use buffers to accumulate data in memory before writing it out to the file in larger chunks, which can improve write performance.
+
+// ==================================================================================================== //
+
+ToDo:
+
+1. File Operations: 
+    ☐ Read Files (buffer ofc)
+
+    ☐ Write Files
+    ☐ Create Files
+    ☐ Checking if a path exists
+    ☐ Checking if a path is a file or a directory
+    
+    ☐ Delete Files [Might need when uploading original files?]
+
+
+2. Directory Operations: 
+    ☐ Create directory
+    ☐ List directory contents
+    ☐ Delete directory [Might need when uploading original but archived-directory?]
+    ☐ Moving directory? 
+
+
+3. Path Manipulation:
+    ☐ Joining
+    ☐ Splitting
+    ☐ Normalizing
+    ☐ Getting the absolute path
+    ☐ Getting the relative path
+
+
+4. Metadata Handling: 
+    ☐ Getting the file metadata
+    ☐ Getting the file name
+    ☐ Getting the file extension
+    ☐ Getting the file size
+    ☐ Getting permissions
+
+    ☐ Getting the directory name
+
+
+5. Compression & Decompression:
+    - Common compression algorithms = `zstd`, `flate2`
+    ✔ Zip @done (20/09/2023, 12:16:38)
+    ✔ Unzip @done (20/09/2023, 12:16:39)
+
+
+6. Unit and Integration Testing:
+    - Use Rust's built-in testing framework `(#[cfg(test)])` and consider using testing libraries like `assert_eq!` and `quickcheck`
+
+    ✔ Write comprehensive unit tests and integration tests to ensure the correctness and reliability @done (20/09/2023, 12:16:51)
+
+
+7. Documentation: 
+    - Using `rustdoc`? 
