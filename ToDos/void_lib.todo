@@ -1,8 +1,0 @@
-ToDo: 
-    ✔ 1. File Existence Check (for both files and directories) @done (08/09/2023, 00:01:39)
-    ✔ 2. File and Directory Location Retrieval @done (08/09/2023, 11:43:14)
-
-    ✔ 3. File Search (System-Wide) @done (09/09/2023, 13:44:24)
-
-    ✔ 5. Directory Archiving [for Upload] @done (10/09/2023, 18:41:38)
-    ✔ 6. Decompressing Files (if they're in archived forms) @done (11/09/2023, 14:23:24)

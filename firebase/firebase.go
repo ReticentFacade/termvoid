@@ -3,9 +3,9 @@ package firebase
 import (
 	"golang.org/x/net/context"
 	// "context"
-	"config"
 	"fmt"
 	"log"
+	"termvoid/config"
 
 	firebase "firebase.google.com/go/v4"
 	// "github.com/joho/godotenv"

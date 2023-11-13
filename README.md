@@ -1,4 +1,3 @@
-
 ## ToDo: 
 - [ ] `void`: cmd/info.go
 - [ ] `void_lib`: Wrap `file-operations`
