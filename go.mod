@@ -1,6 +1,6 @@
 module termvoid
 
-go 1.18
+go 1.21.4
 
 require (
 	firebase.google.com/go/v4 v4.12.1
@@ -8,7 +8,7 @@ require (
 	github.com/joho/godotenv v1.5.1
 	github.com/spf13/cobra v1.8.0
 	golang.org/x/net v0.18.0
-	google.golang.org/api v0.150.0
+	google.golang.org/api v0.151.0
 	google.golang.org/grpc v1.59.0
 	google.golang.org/protobuf v1.31.0
 )
