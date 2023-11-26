@@ -6,6 +6,6 @@ import (
 )
 
 func main() {
-	cmd.Execute()
 	server.ServerStartup()
+	cmd.Execute()
 }
