@@ -9,15 +9,20 @@ import (
 	"os"
 
 	firebase "firebase.google.com/go/v4"
-	"github.com/joho/godotenv"
+	// "github.com/joho/godotenv"
+	"termvoid/config"
 )
 
 // Uploads file to storage using a stream of bytes
 func UploadFileToFirebase(ctx context.Context, app *firebase.App, reader io.Reader, fileName, destinationPath string) error {
 	// Loading env variables:
-	err := godotenv.Load()
+	// err := godotenv.Load()
+	// if err != nil {
+	// 	log.Fatal("Error loading .env file: ", err)
+	// }
+	err := config.LoadEnv()
 	if err != nil {
-		log.Fatal("Error loading .env file: ", err)
+		log.Print("Error loading .env file:", err)
 	}
 
 	// Get firebase storage client:
