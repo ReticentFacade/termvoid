@@ -36,7 +36,15 @@ func GetFileInfo(ctx context.Context, request *pb.FileRequest) (*pb.FileMetadata
 	client := pb.NewFileServiceClient(conn)
 	fmt.Print("`client` from NewFileServiceClient: ", client)
 
-	// fileInfo, err := client.FileMetadata{}
+	fileInfo, err := client.GetFileInfo(ctx, &pb.FileRequest{})
+	if err != nil {
+		log.Fatal("error while fetching file info: ", err)
+	}
+
+	fmt.Println("File Info:", fileInfo)
+	if err != nil {
+		log.Fatal("error getting file metadata: ", err)
+	}
 
 	return nil, nil
 }
