@@ -1,6 +1,8 @@
 package cmd
 
 import (
+	"log"
+
 	"golang.org/x/net/context"
 	// "context"
 	"fmt"
@@ -10,7 +12,6 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// // infoCmd represents the info command
 var infoCmd = &cobra.Command{
 	Use:   "info",
 	Short: "Fetches the metadata of a file",
@@ -23,9 +24,17 @@ var infoCmd = &cobra.Command{
 }
 
 func GetFileInfo(ctx context.Context, request *pb.FileRequest) (*pb.FileMetadata, error) {
-	// Implement logic to fetch file information based on the request
-	// You can return a FileMetadata message with the file details
-	// or handle it as needed
+	err := ConnectionUtil()
+	if err != nil {
+		log.Fatal("check connection in termvoid/cmd/client.go: ", err)
+	}
+	fmt.Println("Connection established...")
+
+	// client := pb.NewFileServiceClient()
+	// fmt.Print("`client` from NewFileServiceClient: ", client)
+
+	// fileInfo, err := client.FileMetadata{}
+
 	return nil, nil
 }
 
