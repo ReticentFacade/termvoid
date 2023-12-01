@@ -24,14 +24,17 @@ var infoCmd = &cobra.Command{
 }
 
 func GetFileInfo(ctx context.Context, request *pb.FileRequest) (*pb.FileMetadata, error) {
-	err := ConnectionUtil()
+	conn, err := ConnectionUtil()
 	if err != nil {
 		log.Fatal("check connection in termvoid/cmd/client.go: ", err)
 	}
 	fmt.Println("Connection established...")
 
-	// client := pb.NewFileServiceClient()
-	// fmt.Print("`client` from NewFileServiceClient: ", client)
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
+	client := pb.NewFileServiceClient(conn)
+	fmt.Print("`client` from NewFileServiceClient: ", client)
 
 	// fileInfo, err := client.FileMetadata{}
 
